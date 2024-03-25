@@ -48,3 +48,49 @@ void PontoWindow::on_pushButton_clicked()
     desenhar_ponto(x, y);
     ui->label_3->setPixmap(QPixmap::fromImage(img_ponto));
 }
+
+void PontoWindow::on_btnZoomIn_clicked() {
+    QPixmap pixmap = ui->label_3->pixmap(Qt::ReturnByValue);
+    pixmap = pixmap.scaled(pixmap.width() * 1.2, pixmap.height() * 1.2);
+    ui->label_3->setPixmap(pixmap);
+
+    ui->label_3->setFixedSize(pixmap.size());
+}
+
+void PontoWindow::on_btnZoomOut_clicked() {
+    QPixmap pixmap = ui->label_3->pixmap(Qt::ReturnByValue);
+    pixmap = pixmap.scaled(pixmap.width() * 0.8, pixmap.height() * 0.8);
+    ui->label_3->setPixmap(pixmap);
+
+    ui->label_3->setFixedSize(pixmap.size());
+}
+
+void PontoWindow::on_btnUp_clicked() {
+    QPoint currentPosition = ui->label_3->pos();
+    ui->label_3->move(currentPosition.x() , currentPosition.y() - 10) ; // Move 10 pixels para a direita
+
+    ui->label_3->update();
+}
+
+void PontoWindow::on_btnDown_clicked() {
+    QPoint currentPosition = ui->label_3->pos();
+    ui->label_3->move(currentPosition.x() , currentPosition.y() + 10) ; // Move 10 pixels para a direita
+
+    ui->label_3->update();
+}
+
+void PontoWindow::on_btnLeft_clicked() {
+    QPoint currentPosition = ui->label_3->pos();
+    ui->label_3->move(currentPosition.x() - 10, currentPosition.y()); // Move 10 pixels para a esquerda
+
+    ui->label_3->update();
+}
+
+void PontoWindow::on_btnRight_clicked() {
+    QPoint currentPosition = ui->label_3->pos();
+    ui->label_3->move(currentPosition.x() + 10, currentPosition.y()); // Move 10 pixels para a direita
+
+    ui->label_3->update();
+}
+
+

@@ -3,6 +3,7 @@
 #include <QLabel>
 #include <QTextEdit>
 #include <QPainter>
+#include <QPixmap>
 
 QImage img(500, 500, QImage::Format_RGB888);
 
@@ -70,4 +71,49 @@ void RetaWindow::on_pushButton_clicked()
     dda_line(x1, y1, x2, y2);
     ui->label_2->setPixmap(QPixmap::fromImage(img));
 }
+
+void RetaWindow::on_btnZoomIn_clicked() {
+    QPixmap pixmap = ui->label_2->pixmap(Qt::ReturnByValue);
+    pixmap = pixmap.scaled(pixmap.width() * 1.2, pixmap.height() * 1.2);
+    ui->label_2->setPixmap(pixmap);
+
+    ui->label_2->setFixedSize(pixmap.size());
+}
+
+void RetaWindow::on_btnZoomOut_clicked() {
+    QPixmap pixmap = ui->label_2->pixmap(Qt::ReturnByValue);
+    pixmap = pixmap.scaled(pixmap.width() * 0.8, pixmap.height() * 0.8);
+    ui->label_2->setPixmap(pixmap);
+
+    ui->label_2->setFixedSize(pixmap.size());
+}
+
+void RetaWindow::on_btnUp_clicked() {
+    QPoint currentPosition = ui->label_2->pos();
+    ui->label_2->move(currentPosition.x() , currentPosition.y() - 10) ; // Move 10 pixels para a direita
+
+    ui->label_2->update();
+}
+
+void RetaWindow::on_btnDown_clicked() {
+    QPoint currentPosition = ui->label_2->pos();
+    ui->label_2->move(currentPosition.x() , currentPosition.y() + 10) ; // Move 10 pixels para a direita
+
+    ui->label_2->update();
+}
+
+void RetaWindow::on_btnLeft_clicked() {
+    QPoint currentPosition = ui->label_2->pos();
+    ui->label_2->move(currentPosition.x() - 10, currentPosition.y()); // Move 10 pixels para a esquerda
+
+    ui->label_2->update();
+}
+
+void RetaWindow::on_btnRight_clicked() {
+    QPoint currentPosition = ui->label_2->pos();
+    ui->label_2->move(currentPosition.x() + 10, currentPosition.y()); // Move 10 pixels para a direita
+
+    ui->label_2->update();
+}
+
 

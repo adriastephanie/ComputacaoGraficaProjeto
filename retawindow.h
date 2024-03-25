@@ -1,5 +1,7 @@
 #ifndef RETAWINDOW_H
 #define RETAWINDOW_H
+#include <QLabel>
+
 
 #include <QMainWindow>
 
@@ -18,6 +20,18 @@ public:
 
 private slots:
     void on_pushButton_clicked();
+
+    void on_btnLeft_clicked();
+
+    void on_btnUp_clicked();
+
+    void on_btnDown_clicked();
+
+    void on_btnRight_clicked();
+
+    void on_btnZoomIn_clicked();
+
+    void on_btnZoomOut_clicked();
 
 private:
     Ui::RetaWindow *ui;

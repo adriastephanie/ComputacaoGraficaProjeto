@@ -58,6 +58,51 @@ void poligonosWindow::on_pushButton_clicked()
 }
 
 
+void poligonosWindow::on_btnZoomIn_clicked() {
+    QPixmap pixmap = ui->label_2->pixmap(Qt::ReturnByValue);
+    pixmap = pixmap.scaled(pixmap.width() * 1.2, pixmap.height() * 1.2);
+    ui->label_2->setPixmap(pixmap);
+
+    ui->label_2->setFixedSize(pixmap.size());
+}
+
+void poligonosWindow::on_btnZoomOut_clicked() {
+    QPixmap pixmap = ui->label_2->pixmap(Qt::ReturnByValue);
+    pixmap = pixmap.scaled(pixmap.width() * 0.8, pixmap.height() * 0.8);
+    ui->label_2->setPixmap(pixmap);
+
+    ui->label_2->setFixedSize(pixmap.size());
+}
+
+void poligonosWindow::on_btnUp_clicked() {
+    QPoint currentPosition = ui->label_3->pos();
+    ui->label_3->move(currentPosition.x() , currentPosition.y() - 10) ; // Move 10 pixels para a direita
+
+    ui->label_3->update();
+}
+
+void poligonosWindow::on_btnDown_clicked() {
+    QPoint currentPosition = ui->label_2->pos();
+    ui->label_2->move(currentPosition.x() , currentPosition.y() + 10) ; // Move 10 pixels para a direita
+
+    ui->label_2->update();
+}
+
+void poligonosWindow::on_btnLeft_clicked() {
+    QPoint currentPosition = ui->label_2->pos();
+    ui->label_2->move(currentPosition.x() - 10, currentPosition.y()); // Move 10 pixels para a esquerda
+
+    ui->label_2->update();
+}
+
+void poligonosWindow::on_btnRight_clicked() {
+    QPoint currentPosition = ui->label_2->pos();
+    ui->label_2->move(currentPosition.x() + 10, currentPosition.y()); // Move 10 pixels para a direita
+
+    ui->label_2->update();
+}
+
+
 // void poligonosWindow::desenhar_poligono(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4){
 //     // Cria um objeto QPainter para desenhar na imagem
 //     QPainter painter(&img_poli);
@@ -72,4 +117,5 @@ void poligonosWindow::on_pushButton_clicked()
 //     ui->label_2->setPixmap(QPixmap::fromImage(img_poli));
 
 // }
+
 

@@ -19,6 +19,18 @@ public:
 private slots:
     void on_pushButton_clicked();
 
+    void on_btnUp_clicked();
+
+    void on_btnDown_clicked();
+
+    void on_btnRight_clicked();
+
+    void on_btnZoomIn_clicked();
+
+    void on_btnZoomOut_clicked();
+
+    void on_btnLeft_clicked();
+
 private:
     Ui::poligonosWindow *ui;
 };
